@@ -2,13 +2,15 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+cd "$BASEDIR"
+
 # zsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-	${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+mkdir -p ~/.oh-my-zsh/custom
+cp -R zsh-custom/* ~/.oh-my-zsh/custom
 
 # vim
-ln -s ${BASEDIR}/_vimrc ~/.vimrc
+cp -i _vimrc ~/.vimrc
 
 # git
-ln -s ${BASEDIR}/_gitconfig ~/.gitconfig
+cp -i _gitconfig ~/.gitconfig
 
