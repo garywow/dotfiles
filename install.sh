@@ -5,12 +5,23 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASEDIR"
 
 # zsh
+echo install ~/.oh-my-zsh/custom/
 mkdir -p ~/.oh-my-zsh/custom
 cp -R zsh-custom/* ~/.oh-my-zsh/custom
 
 # vim
-cp -i _vimrc ~/.vimrc
+if [ ! -f ~/.vimrc ]; then
+    echo install ~/.vimrc
+    cp _vimrc ~/.vimrc
+else
+    echo ~/.vimrc already exists
+fi
 
 # git
-cp -i _gitconfig ~/.gitconfig
+if [ ! -f ~/.gitconfig ]; then
+    echo install ~/.gitconfig
+    cp _gitconfig ~/.gitconfig
+else
+    echo ~/.gitconfig already exists
+fi
 
