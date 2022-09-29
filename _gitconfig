@@ -1,0 +1,23 @@
+[core]
+        autocrlf = false
+        editor = vim
+	pager = less -FX
+[pull]
+        ff = only
+[format]
+        pretty = format:"%h %ad | [%an] %s %C(auto) %d"
+        date = %Y-%m-%d %H:%M:%S
+[color]
+        ui = auto
+[log]
+        date = format:"%Y-%m-%d %H:%M:%S"
+[alias]
+        lg = log -n 20 --graph
+        llg = log --graph
+        st = status
+        cm = commit -m MOVE
+        df = diff -b
+        dfc = diff -b --cached
+[url "https://github.com/"]
+	insteadOf = git://github.com/
+
