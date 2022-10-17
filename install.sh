@@ -25,8 +25,8 @@ else
     echo ~/.gitconfig already exists
 fi
 
-cp prepare-env.sh ~
-cp prepare-godev.sh ~
+cp setup-devenv.sh ~
+cp setup-devenv-go.sh ~
 
-chmod +x ~/prepare-env.sh
-chmod +x ~/prepare-godev.sh
+chmod +x ~/setup-devenv.sh
+chmod +x ~/setup-devenv-go.sh
