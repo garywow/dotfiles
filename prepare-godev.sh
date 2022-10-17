@@ -1,12 +1,10 @@
 #!/bin/sh
 
-echo update packages
-sudo apt update -y
-sudo apt upgrade -y
+~/prepare-env.sh
 
 echo ""
 echo install protoc
-sudo apt install -y vim protobuf-compiler clang-format dos2unix
+sudo apt install -y protobuf-compiler clang-format
 
 go env -w GOPROXY=https://goproxy.io,direct
 

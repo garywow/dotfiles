@@ -25,3 +25,5 @@ else
     echo ~/.gitconfig already exists
 fi
 
+cp prepare-env.sh ~
+cp prepare-godev.sh ~
