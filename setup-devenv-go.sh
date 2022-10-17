@@ -1,6 +1,6 @@
 #!/bin/sh
 
-~/prepare-env.sh
+~/setup-devenv.sh
 
 echo ""
 echo install protoc
