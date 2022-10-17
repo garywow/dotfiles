@@ -27,3 +27,6 @@ fi
 
 cp prepare-env.sh ~
 cp prepare-godev.sh ~
+
+chmod +x ~/prepare-env.sh
+chmod +x ~/prepare-godev.sh
