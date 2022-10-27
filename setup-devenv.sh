@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo install packages
 sudo apt update -y
