@@ -2,9 +2,7 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-cd "$BASEDIR"
-
-./setup-devenv.sh
+"${BASEDIR}/setup-devenv.sh"
 
 echo ""
 echo install protoc

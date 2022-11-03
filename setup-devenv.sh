@@ -1,5 +1,6 @@
 #!/bin/bash
 
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TIME=$( date -u )
 
 echo install packages
@@ -31,20 +32,20 @@ sed -i --posix -E '/^# Preferred editor/a\export EDITOR=vim' ~/.zshrc
 
 # zsh custom
 echo install ~/.oh-my-zsh/custom/
-cp -f -R zsh-custom/* ~/.oh-my-zsh/custom
+cp -f -R "${BASEDIR}/zsh-custom/*" ~/.oh-my-zsh/custom
 
 # vimrc
 [[ -f ~/.vimrc ]] && cp -f ~/.vimrc ~/.vimrc-${TIME} && rm ~/.vimrc
 echo install ~/.vimrc
-cp -f _vimrc ~/.vimrc
+cp -f "${BASEDIR}/_vimrc" ~/.vimrc
 
 # gitconfig
 [[ -f ~/.gitconfig ]] && cp -f ~/.gitconfig ~/.gitconfig-${TIME} && rm ~/.vimrc
 echo install ~/.gitconfig
-cp -f _gitconfig ~/.gitconfig
+cp -f "${BASEDIR}/_gitconfig" ~/.gitconfig
 
 # git flow
 echo install git flow
 cd ~
 [[ -f gitflow-installer.sh ]] && rm -f gitflow-installer.sh
-wget https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && sudo bash gitflow-installer.sh install stable; rm gitflow-installer.sh
+wget https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && sudo bash gitflow-installer.sh install stable; rm gitflow-installer.sh && rm -fr gitflow
