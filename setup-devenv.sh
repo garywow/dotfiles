@@ -48,4 +48,7 @@ cp -f "${BASEDIR}/_gitconfig" ~/.gitconfig
 echo install git flow
 cd ~
 [[ -f gitflow-installer.sh ]] && rm -f gitflow-installer.sh
-wget https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && sudo bash gitflow-installer.sh install stable; rm gitflow-installer.sh && rm -fr gitflow
+wget https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh && sudo bash gitflow-installer.sh install stable; rm gitflow-installer.sh && sudo rm -fr gitflow
+
+# done
+echo done.
