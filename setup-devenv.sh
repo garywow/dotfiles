@@ -9,8 +9,8 @@ install_packages () {
     echo install packages
     echo ""
 
-    APT_BIN=$( which apt &> /dev/null )
-    DNF_BIN=$( which dnf &> /dev/null )
+    APT_BIN=$( which apt 2> /dev/null )
+    DNF_BIN=$( which dnf 2> /dev/null )
 
     if [ -n "$APT_BIN" ]; then
         sudo apt update -y

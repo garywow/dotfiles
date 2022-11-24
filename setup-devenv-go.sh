@@ -22,8 +22,8 @@ install_golibs () {
     echo ""
     echo install protoc
 
-    APT_BIN=$( which apt &> /dev/null )
-    DNF_BIN=$( which dnf &> /dev/null )
+    APT_BIN=$( which apt 2> /dev/null )
+    DNF_BIN=$( which dnf 2> /dev/null )
 
     if [ -n "$APT_OK" ]; then
         sudo apt install -y protobuf-compiler clang-format || exit
