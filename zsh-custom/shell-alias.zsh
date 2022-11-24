@@ -7,7 +7,7 @@ alias free='free -h'
 alias df='df -h'
 
 if [ -n "$CODESPACES" ]; then
-    alias wk='cd /codespaces'
+    alias wk='cd /workspaces'
 else
     alias wk='cd $HOME/works'
 fi
