@@ -4,7 +4,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "$BASEDIR"
 
-cp -f -R . ~/.dotfiles
+[[ -d ~/.dotfiles ]] && rm -fr ~/.dotfiles
+cp -f -R . ~/.dotfiles && rm -fr ~/.dotfiles/.git
 
-chmod +x ~/.dotfiles/setup-devenv.sh
-chmod +x ~/.dotfiles/setup-devenv-go.sh
+chmod +x ~/.dotfiles/*.sh

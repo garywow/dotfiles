@@ -2,24 +2,54 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-"${BASEDIR}/setup-devenv.sh"
+GOVER=1.19.3
 
-echo ""
-echo install protoc
-sudo apt install -y protobuf-compiler clang-format
+install_go () {
+    echo ""
+    echo install go $GOVER
+    cd ~
+    GOPKG=go${GOVER}.linux-amd64.tar.gz
+    [[ -f $GOPKG ]] && rm -f $GOPKG
+    wget -O $GOPKG https://go.dev/dl/$GOPKG || exit
 
-go env -w GOPROXY=https://goproxy.io,direct
+    GOLOCAL=go${GOVER}
+    [[ -d /usr/local/go ]] && sudo rm -fr /usr/local/go
+    sudo tar -C /usr/local -xzf $GOPKG || exit
+    rm $GOPKG
+}
+
+install_golibs () {
+    echo ""
+    echo install protoc
+
+    APT_BIN=$( which apt &> /dev/null )
+    DNF_BIN=$( which dnf &> /dev/null )
+
+    if [ -n "$APT_OK" ]; then
+        sudo apt install -y protobuf-compiler clang-format || exit
+    fi
+
+    if [ -n "$DNF_OK" ]; then
+        echo Not implemented yet
+    fi
+}
+
+install_go
+install_golibs
+
+GOBIN=/usr/local/go/bin/go
+$GOBIN env -w GOPROXY=https://goproxy.io,direct
 
 echo ""
 echo go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+$GOBIN install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
 echo ""
 echo go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+$GOBIN install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 echo ""
 echo go install github.com/swaggo/swag/cmd/swag@latest
-go install github.com/swaggo/swag/cmd/swag@latest
+$GOBIN install github.com/swaggo/swag/cmd/swag@latest
 
 echo ""
